@@ -14,7 +14,10 @@ export default function TodoistAuthHandler() {
     let redirectUrl: string
 
     if (code && state) {
-      redirectUrl = `https://t.me/todoist_ai_assistant_bot?start=code_${code}__state_${state}`
+      redirectUrl = `https://t.me/todoist_ai_assistant_bot?start=code__${code}___state__${state.replaceAll(
+        "-",
+        "_"
+      )}`
     } else {
       redirectUrl = "https://t.me/todoist_ai_assistant_bot?start=auth_failed"
     }
